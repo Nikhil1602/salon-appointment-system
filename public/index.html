@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Salon Appointments</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+  <h1>✂️ Salon Appointments</h1>
+  <div id="whoami" class="whoami"></div>
+</header>
+
+<main>
+  <!-- Login / register -->
+  <section id="auth" class="card">
+    <div class="tabs">
+      <button class="tab active" data-tab="login">Login</button>
+      <button class="tab" data-tab="register">Register</button>
+    </div>
+    <form id="login-form" class="pane">
+      <input name="email" type="email" placeholder="Email" required />
+      <input name="password" type="password" placeholder="Password" required />
+      <button>Login</button>
+      <p class="hint">Seeded: admin@salon.test / admin123 — customer@salon.test / customer123</p>
+    </form>
+    <form id="register-form" class="pane hidden">
+      <input name="name" placeholder="Full name" required />
+      <input name="email" type="email" placeholder="Email" required />
+      <input name="phone" placeholder="Phone (optional)" />
+      <input name="password" type="password" placeholder="Password" required />
+      <button>Create account</button>
+    </form>
+  </section>
+
+  <!-- App (shown after login) -->
+  <div id="app" class="hidden">
+    <nav class="nav" id="nav"></nav>
+
+    <section id="view-book" class="view card">
+      <h2>Book an appointment</h2>
+      <label>Service
+        <select id="book-service"></select>
+      </label>
+      <label>Staff
+        <select id="book-staff"></select>
+      </label>
+      <label>Date
+        <input id="book-date" type="date" />
+      </label>
+      <button id="load-slots">Show available times</button>
+      <div id="slots" class="slots"></div>
+      <label class="check"><input type="checkbox" id="book-pay" /> Pay now (mock payment)</label>
+    </section>
+
+    <section id="view-appointments" class="view card hidden">
+      <h2>My appointments</h2>
+      <div id="appointments"></div>
+    </section>
+
+    <section id="view-profile" class="view card hidden">
+      <h2>My profile</h2>
+      <form id="profile-form">
+        <input name="name" placeholder="Name" />
+        <input name="phone" placeholder="Phone" />
+        <textarea name="preferences" placeholder="Preferences / notes"></textarea>
+        <button>Save</button>
+      </form>
+    </section>
+
+    <section id="view-admin" class="view card hidden">
+      <h2>Admin dashboard</h2>
+      <h3>Add a service</h3>
+      <form id="service-form" class="inline">
+        <input name="name" placeholder="Name" required />
+        <input name="duration_min" type="number" placeholder="Minutes" required />
+        <input name="price" type="number" step="0.01" placeholder="Price" required />
+        <button>Add</button>
+      </form>
+      <h3>All appointments</h3>
+      <div id="admin-appointments"></div>
+      <h3>Users</h3>
+      <div id="admin-users"></div>
+    </section>
+  </div>
+</main>
+
+<div id="toast" class="toast hidden"></div>
+<script src="app.js"></script>
+</body>
+</html>
